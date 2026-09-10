@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Macarena Vega — Product Manager</title>
+  <meta name="description" content="Producto, IA y cosas que terminé.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #0A0A0A;
+      --mid:   #6B6B6B;
+      --rule:  #D8D8D8;
+      --green: #166534;
+      --white: #FFFFFF;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      padding: 5rem 2rem 7rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ── HEADER ─────────────────────────────────── */
+    .header {
+      margin-bottom: 4.5rem;
+    }
+
+    .name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3.25rem, 11vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+      color: var(--black);
+      margin-bottom: 1.25rem;
+    }
+
+    .tagline {
+      font-size: 0.9375rem;
+      color: var(--mid);
+      font-weight: 400;
+      line-height: 1.5;
+      max-width: 42ch;
+    }
+
+    /* ── DIVIDER ─────────────────────────────────── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 2.75rem 0;
+    }
+
+    /* ── SECTION LABEL ───────────────────────────── */
+    .section-label {
+      font-size: 0.8125rem;
+      color: var(--mid);
+      margin-bottom: 2.75rem;
+      letter-spacing: 0.005em;
+    }
+
+    /* ── PROJECT ─────────────────────────────────── */
+    .project {
+      margin-bottom: 3.25rem;
+    }
+
+    .project-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.625rem;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.2rem;
+    }
+
+    .project-role {
+      font-size: 0.8125rem;
+      color: var(--mid);
+      font-style: italic;
+      margin-bottom: 0.85rem;
+    }
+
+    .project-desc {
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      max-width: 58ch;
+      margin-bottom: 1.1rem;
+      color: var(--black);
+    }
+
+    .project-link {
+      display: inline-block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--green);
+      text-decoration: none;
+      border-bottom: 1px solid var(--green);
+      padding-bottom: 1px;
+      transition: opacity 0.12s ease;
+    }
+
+    .project-link:hover {
+      opacity: 0.55;
+    }
+
+    /* ── FOOTER ─────────────────────────────────── */
+    .footer {
+      margin-top: 3.5rem;
+      font-size: 0.875rem;
+      color: var(--mid);
+      line-height: 1.8;
+    }
+
+    .footer a {
+      color: var(--mid);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 480px) {
+      body {
+        padding: 3rem 1.25rem 5rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1 class="name">Macarena<br>Vega</h1>
+    <p class="tagline">
+      Product Manager. Construyo productos digitales y los termino.
+      Obsesionada con la activación, el dato y lo que los usuarios hacen
+      cuando nadie los está mirando.
+    </p>
+  </header>
+
+  <hr>
+
+  <p class="section-label">Cosas que he construido — todos los proyectos enlazados son demos con datos de prueba</p>
+
+  <article class="project">
+    <h2 class="project-name">LiberAI</h2>
+    <p class="project-role">Consultora de tecnología para pymes — fundadora</p>
+    <p class="project-desc">
+      Mi consultora: construyo webs, herramientas de gestión y automatizaciones para empresas
+      de construcción, instalaciones y servicios de campo con baja madurez digital.
+      Clientes reales, proyectos desplegados, negocio en marcha.
+    </p>
+    <a href="https://liberai.es" target="_blank" rel="noopener" class="project-link">liberai.es</a>
+  </article>
+
+  <hr>
+
+  <article class="project">
+    <h2 class="project-name">Campus Tools — BIG School</h2>
+    <p class="project-role">Suite de herramientas internas — Product Manager</p>
+    <p class="project-desc">
+      Un conjunto de herramientas que diseñé y coordiné para el equipo de atención al cliente:
+      generadores de HTML para directos, banners, calendarios, thumbnails masivos, quizzes
+      y bolsa de empleo. Reduce el trabajo manual repetitivo del equipo y estandariza
+      la publicación de contenido en el campus.
+    </p>
+    <a href="https://generadordehtml.netlify.app/" target="_blank" rel="noopener" class="project-link">generadordehtml.netlify.app</a>
+    <p style="margin-top:0.6rem; font-size:0.8125rem; color:var(--mid);">Acceso: usuario <code style="font-family:monospace; color:var(--black);">BIG</code> &middot; clave <code style="font-family:monospace; color:var(--black);">1234</code></p>
+  </article>
+
+  <hr>
+
+  <article class="project">
+    <h2 class="project-name">Survey Clarity</h2>
+    <p class="project-role">Dashboard de análisis de encuestas — BIG School · Product Manager</p>
+    <p class="project-desc">
+      Una herramienta que construí para visualizar los resultados de encuestas de satisfacción
+      del máster: NPS, puntuaciones por dimensión (contenido, soporte, directos, Discord),
+      deduplicación automática de respuestas y resumen ejecutivo. Diseñada para que
+      cualquier persona del equipo lea los datos sin necesidad de exportar nada.
+    </p>
+    <a href="https://survey-clarity.lovable.app/" target="_blank" rel="noopener" class="project-link">survey-clarity.lovable.app</a>
+  </article>
+
+  <hr>
+
+  <article class="project">
+    <h2 class="project-name">PM Onboarding Dashboard</h2>
+    <p class="project-role">Herramienta interna — BIG School · Product Manager</p>
+    <p class="project-desc">
+      Un dashboard que diseñé y construí para estructurar el trabajo de los PMs del Máster en IA:
+      onboarding, KPIs, checklist de lanzamiento de edición, FUNDAE, contenidos, directos,
+      encuestas y pagos a profesores — todo en un solo lugar con seguimiento de progreso.
+      Construido en Lovable, operativo desde el primer día.
+    </p>
+    <a href="https://pm-big-school-launch.lovable.app/" target="_blank" rel="noopener" class="project-link">pm-big-school-launch.lovable.app</a>
+  </article>
+
+  <hr>
+
+  <article class="project">
+    <h2 class="project-name">Gestor de Facturas</h2>
+    <p class="project-role">Herramienta con IA — LiberAI · en producción</p>
+    <p class="project-desc">
+      Una herramienta real para una empresa real: captura de tickets con OCR e IA,
+      generación automática de facturas con marca, informes de conformidad con firma digital
+      y despacho a gestoría. Python + Streamlit + SQLite.
+      Desplegada en producción para una empresa de trabajos en altura en Barcelona.
+    </p>
+    <a href="https://gestorfacturas.streamlit.app" target="_blank" rel="noopener" class="project-link">gestorfacturas.streamlit.app</a>
+    <p style="margin-top:0.6rem; font-size:0.8125rem; color:var(--mid);">Acceso: clave <code style="font-family:monospace; color:var(--black);">Euler123!</code></p>
+  </article>
+
+  <hr>
+
+  <footer class="footer">
+    <p>Macarena Vega · Barcelona</p>
+    <p>
+      <!-- Añade tu email y LinkedIn -->
+      <a href="mailto:macarenalvega@gmail.com">macarenalvega@gmail.com</a> ·
+      <a href="https://www.linkedin.com/in/macarenalvega/" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+  </footer>
+
+</body>
+</html>
