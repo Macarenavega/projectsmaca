@@ -7,7 +7,7 @@
   <meta name="description" content="Producto, IA y cosas que terminé.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -16,223 +16,778 @@
     }
 
     :root {
-      --black: #0A0A0A;
-      --mid:   #6B6B6B;
-      --rule:  #D8D8D8;
-      --green: #166534;
-      --white: #FFFFFF;
+      /* Colors */
+      --canvas:   #eeeeee;
+      --paper:    #ffffff;
+      --ink:      #222222;
+      --graphite: #333333;
+      --ash:      #555555;
+      --black:    #000000;
+
+      /* Type */
+      --font-inter: 'Inter', Arial, 'Helvetica Neue', sans-serif;
+      --font-tight: 'Inter Tight', 'Inter', 'Arial Narrow', sans-serif;
+
+      /* Spacing & shape */
+      --gutter: 48px;
+      --section-gap: 140px;
+      --element-gap: 16px;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --shadow-md: rgba(0, 0, 0, 0.1) 0px 2px 15px 0px;
     }
 
+    html { scroll-behavior: smooth; }
+
     body {
-      background: var(--white);
-      color: var(--black);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 1rem;
-      line-height: 1.6;
-      padding: 5rem 2rem 7rem;
-      max-width: 700px;
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: var(--font-inter);
+      font-size: 16px;
+      line-height: 1.4;
+      font-feature-settings: "palt";
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      max-width: 1320px;
       margin: 0 auto;
+      padding: 0 var(--gutter);
     }
 
     /* ── HEADER ─────────────────────────────────── */
     .header {
-      margin-bottom: 4.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding-top: 20px;
+      padding-bottom: 20px;
     }
 
-    .name {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(3.25rem, 11vw, 6rem);
-      line-height: 0.95;
-      letter-spacing: -0.025em;
-      color: var(--black);
-      margin-bottom: 1.25rem;
+    .wordmark {
+      font-family: var(--font-tight);
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+      text-decoration: none;
     }
 
-    .tagline {
-      font-size: 0.9375rem;
-      color: var(--mid);
-      font-weight: 400;
-      line-height: 1.5;
-      max-width: 42ch;
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
     }
 
-    /* ── DIVIDER ─────────────────────────────────── */
-    hr {
-      border: none;
-      border-top: 1px solid var(--rule);
-      margin: 2.75rem 0;
+    .nav a {
+      font-family: var(--font-tight);
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 21px;
+      text-decoration: none;
     }
 
-    /* ── SECTION LABEL ───────────────────────────── */
-    .section-label {
-      font-size: 0.8125rem;
-      color: var(--mid);
-      margin-bottom: 2.75rem;
-      letter-spacing: 0.005em;
+    .nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── BUTTONS ────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-inter);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 22.4px;
+      letter-spacing: -0.64px;
+      text-decoration: none;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      transition: box-shadow 0.15s ease, transform 0.15s ease;
     }
 
-    /* ── PROJECT ─────────────────────────────────── */
+    .btn:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+
+    .nav .btn { font-family: var(--font-inter); padding: 8px 18px; }
+
+    .btn--compact {
+      border-radius: var(--radius-sm);
+      padding: 12px 20px 12px 24px;
+    }
+
+    .btn--inverse {
+      background: var(--paper);
+      color: var(--graphite);
+      border: 1px solid var(--ink);
+    }
+
+    .arrow { width: 14px; height: 14px; flex: none; }
+
+    /* ── HERO ───────────────────────────────────── */
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 0 16px;
+      padding-top: 64px;
+      padding-bottom: 100px;
+      min-height: 720px;
+    }
+
+    .hero-title {
+      grid-column: 1 / 8;
+      grid-row: 1;
+      position: relative;
+      z-index: 2;
+      font-size: 80px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      max-width: 9.5ch;
+    }
+
+    .hero-kicker {
+      display: block;
+      font-family: var(--font-tight);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: 21px;
+      color: var(--ash);
+      margin-bottom: 28px;
+    }
+
+    .collage {
+      grid-column: 5 / 13;
+      grid-row: 1 / 3;
+      position: relative;
+      min-height: 560px;
+    }
+
+    .tile {
+      position: absolute;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0;
+      text-decoration: none;
+      transition: transform 0.25s ease;
+    }
+
+    .tile:hover { transform: translateY(-6px) rotate(-0.5deg); z-index: 10; }
+
+    .tile .t-label {
+      position: absolute;
+      left: 16px;
+      bottom: 14px;
+      font-family: var(--font-tight);
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.1;
+    }
+
+    /* Tile artworks: the only color on the page */
+    .tile--liberai {
+      top: 0; left: 30%;
+      width: 44%; aspect-ratio: 4 / 5;
+      border-radius: var(--radius-md);
+      background: #ff4d1f;
+      color: #1a0a02;
+      z-index: 3;
+    }
+    .tile--liberai .art {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 70% 30%, #ffd23f 0 22%, transparent 22.5%),
+        linear-gradient(135deg, transparent 55%, #1a0a02 55% 58%, transparent 58%);
+    }
+    .tile--liberai .t-big {
+      position: absolute; left: 14px; top: 12px;
+      font-size: clamp(40px, 5vw, 72px); font-weight: 700;
+      letter-spacing: -0.06em; line-height: 0.85;
+    }
+
+    .tile--campus {
+      top: 12%; left: 0;
+      width: 36%; aspect-ratio: 1;
+      border-radius: var(--radius-sm);
+      background: #1f3bff;
+      color: #fff;
+      z-index: 2;
+    }
+    .tile--campus .art {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(#ffffff22 1px, transparent 1px),
+        linear-gradient(90deg, #ffffff22 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .tile--campus .t-big {
+      position: absolute; right: 14px; top: 10px;
+      font-size: clamp(56px, 7vw, 110px); font-weight: 700;
+      letter-spacing: -0.06em; line-height: 0.8;
+      color: #c7ff3d;
+    }
+
+    .tile--survey {
+      top: 4%; right: 0;
+      width: 30%; aspect-ratio: 3 / 4;
+      border-radius: var(--radius-md);
+      background: #c7ff3d;
+      color: #0d1a00;
+      z-index: 4;
+    }
+    .tile--survey .art {
+      position: absolute; left: 14px; right: 14px; top: 18px; bottom: 44px;
+      display: flex; align-items: flex-end; gap: 6px;
+    }
+    .tile--survey .art span {
+      flex: 1; background: #0d1a00; border-radius: 2px 2px 0 0;
+    }
+
+    .tile--pm {
+      top: 52%; left: 12%;
+      width: 40%; aspect-ratio: 16 / 11;
+      border-radius: var(--radius-md);
+      background: #000;
+      color: #fff;
+      z-index: 5;
+    }
+    .tile--pm .art {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, #000 0%, #000 45%, transparent 45%),
+        repeating-linear-gradient(90deg, #ff5fd2 0 18%, #000 18% 20%);
+      opacity: 0.95;
+    }
+    .tile--pm .t-big {
+      position: absolute; left: 14px; top: 10px;
+      font-size: clamp(28px, 3.2vw, 44px); font-weight: 700;
+      letter-spacing: -0.05em; line-height: 0.9;
+    }
+
+    .tile--facturas {
+      top: 48%; right: 4%;
+      width: 34%; aspect-ratio: 1;
+      border-radius: var(--radius-sm);
+      background: #ffe14d;
+      color: #222;
+      z-index: 6;
+    }
+    .tile--facturas .art {
+      position: absolute; left: 22%; top: 12%;
+      width: 56%; height: 64%;
+      background:
+        repeating-linear-gradient(180deg, transparent 0 14px, #22222230 14px 16px),
+        #fff;
+      border-radius: 2px;
+      transform: rotate(-6deg);
+      box-shadow: 6px 6px 0 #222;
+    }
+
+    .hero-aside {
+      grid-column: 1 / 5;
+      grid-row: 2;
+      align-self: end;
+      position: relative;
+      z-index: 2;
+      max-width: 340px;
+    }
+
+    .hero-aside p {
+      font-size: 16px;
+      line-height: 1.66;
+      color: var(--graphite);
+      margin-bottom: 24px;
+    }
+
+    /* ── SECTION HEADINGS ───────────────────────── */
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      max-width: 14ch;
+    }
+
+    .section-note {
+      font-family: var(--font-tight);
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 21px;
+      color: var(--ash);
+      max-width: 34ch;
+      text-align: right;
+    }
+
+    /* ── PROJECTS ───────────────────────────────── */
+    .projects {
+      padding-top: 40px;
+      padding-bottom: var(--section-gap);
+    }
+
     .project {
-      margin-bottom: 3.25rem;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      align-items: start;
+      padding: 48px 0;
     }
+
+    .project + .project { border-top: 1px solid #d6d6d6; }
+
+    .project-index {
+      grid-column: 1 / 2;
+      font-family: var(--font-tight);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ash);
+      padding-top: 10px;
+    }
+
+    .project-body { grid-column: 2 / 8; }
 
     .project-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.625rem;
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.2rem;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
     }
 
     .project-role {
-      font-size: 0.8125rem;
-      color: var(--mid);
-      font-style: italic;
-      margin-bottom: 0.85rem;
+      font-family: var(--font-tight);
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 21px;
+      color: var(--ash);
+      margin-bottom: 24px;
     }
 
     .project-desc {
-      font-size: 0.9375rem;
-      line-height: 1.7;
+      font-size: 16px;
+      line-height: 1.66;
+      color: var(--graphite);
       max-width: 58ch;
-      margin-bottom: 1.1rem;
-      color: var(--black);
+      margin-bottom: 28px;
     }
 
-    .project-link {
-      display: inline-block;
-      font-size: 0.875rem;
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .access {
+      font-family: var(--font-tight);
+      font-size: 15px;
       font-weight: 500;
-      color: var(--green);
-      text-decoration: none;
-      border-bottom: 1px solid var(--green);
-      padding-bottom: 1px;
-      transition: opacity 0.12s ease;
+      color: var(--ash);
     }
 
-    .project-link:hover {
-      opacity: 0.55;
+    .access code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 14px;
+      color: var(--ink);
+      background: var(--paper);
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
     }
+
+    .project-visual {
+      grid-column: 9 / 13;
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      display: block;
+    }
+
+    .project-visual .tile {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: auto;
+      top: 0; left: 0; right: auto;
+      border-radius: 0;
+    }
+
+    .project-visual .tile:hover { transform: none; }
+    .project-visual:hover .tile { transform: scale(1.03); }
+    .project-visual .tile { transition: transform 0.4s ease; }
+
+    /* ── DARK BAND ──────────────────────────────── */
+    .band {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .band .wrap {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+
+    .band-title {
+      grid-column: 1 / 8;
+      font-size: 64px;
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .band-cols {
+      grid-column: 9 / 13;
+      display: grid;
+      gap: 32px;
+      align-content: end;
+    }
+
+    .band-cols h3 {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 26.56px;
+    }
+
+    .band-cols p,
+    .band-cols a:not(.btn) {
+      font-size: 16px;
+      line-height: 26.56px;
+      color: #f7f7f7;
+    }
+
+    .band-cols a:not(.btn) { text-underline-offset: 3px; }
 
     /* ── FOOTER ─────────────────────────────────── */
-    .footer {
-      margin-top: 3.5rem;
-      font-size: 0.875rem;
-      color: var(--mid);
-      line-height: 1.8;
+    .footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 48px;
+      padding-bottom: 48px;
     }
 
-    .footer a {
-      color: var(--mid);
-      text-decoration: underline;
-      text-underline-offset: 2px;
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 24px;
     }
 
-    /* ── RESPONSIVE ──────────────────────────────── */
-    @media (max-width: 480px) {
-      body {
-        padding: 3rem 1.25rem 5rem;
+    .footer a,
+    .footer p {
+      font-family: var(--font-tight);
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 21px;
+      text-decoration: none;
+    }
+
+    .footer a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .legal {
+      width: 100%;
+      font-family: var(--font-inter) !important;
+      font-size: 11px !important;
+      line-height: 1.66 !important;
+      letter-spacing: -0.11px;
+      color: var(--ash);
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 1080px) {
+      .hero-title { font-size: 64px; }
+      .band-title { font-size: 48px; }
+    }
+
+    @media (max-width: 860px) {
+      :root { --gutter: 24px; --section-gap: 100px; }
+
+      .hero {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        padding-top: 40px;
+        padding-bottom: 60px;
       }
+
+      .hero-title { font-size: 56px; max-width: none; }
+
+      .collage {
+        width: 100%;
+        min-height: 0;
+        aspect-ratio: 1 / 0.9;
+        margin: 32px 0 24px;
+      }
+
+      .hero-aside { max-width: none; }
+
+      .section-head { flex-direction: column; align-items: flex-start; }
+      .section-note { text-align: left; }
+      .section-title { font-size: 40px; }
+
+      .project { display: flex; flex-direction: column; gap: 20px; }
+      .project-index { padding-top: 0; }
+      .project-name { font-size: 36px; }
+      .project-visual { width: 100%; order: -1; }
+
+      .band .wrap { display: flex; flex-direction: column; gap: 48px; padding-top: 72px; padding-bottom: 72px; }
+      .band-title { font-size: 40px; }
+    }
+
+    @media (max-width: 480px) {
+      :root { --gutter: 16px; }
+      .nav { gap: 16px; }
+      .nav .hide-sm { display: none; }
+      .hero-title { font-size: 44px; }
+      .tile .t-label { font-size: 12px; left: 10px; bottom: 8px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
       * { transition: none !important; }
     }
   </style>
 </head>
 <body>
 
-  <header class="header">
-    <h1 class="name">Macarena<br>Vega</h1>
-    <p class="tagline">
-      Product Manager. Construyo productos digitales y los termino.
-      Obsesionada con la activación, el dato y lo que los usuarios hacen
-      cuando nadie los está mirando.
-    </p>
+  <header class="wrap header">
+    <a href="#" class="wordmark">Macarena Vega</a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#proyectos" class="hide-sm">Proyectos</a>
+      <a href="#contacto" class="hide-sm">Contacto</a>
+      <a href="https://www.linkedin.com/in/macarenalvega/" target="_blank" rel="noopener" class="btn">LinkedIn</a>
+    </nav>
   </header>
 
-  <hr>
+  <main>
 
-  <p class="section-label">Cosas que he construido — todos los proyectos enlazados son demos con datos de prueba</p>
+    <!-- ── HERO ───────────────────────────────── -->
+    <section class="wrap hero">
+      <h1 class="hero-title">
+        <span class="hero-kicker">Product Manager · Barcelona</span>
+        Producto, IA y cosas que terminé.
+      </h1>
 
-  <article class="project">
-    <h2 class="project-name">LiberAI</h2>
-    <p class="project-role">Consultora de tecnología para pymes — fundadora</p>
-    <p class="project-desc">
-      Mi consultora: construyo webs, herramientas de gestión y automatizaciones para empresas
-      de construcción, instalaciones y servicios de campo con baja madurez digital.
-      Clientes reales, proyectos desplegados, negocio en marcha.
-    </p>
-    <a href="https://liberai.es" target="_blank" rel="noopener" class="project-link">liberai.es</a>
-  </article>
+      <div class="collage" aria-hidden="true">
+        <a href="#liberai" class="tile tile--liberai" tabindex="-1">
+          <span class="art"></span>
+          <span class="t-big">Liber<br>AI</span>
+          <span class="t-label">LiberAI</span>
+        </a>
+        <a href="#campus" class="tile tile--campus" tabindex="-1">
+          <span class="art"></span>
+          <span class="t-big">&lt;/&gt;</span>
+          <span class="t-label">Campus Tools</span>
+        </a>
+        <a href="#survey" class="tile tile--survey" tabindex="-1">
+          <span class="art">
+            <span style="height:45%"></span><span style="height:70%"></span><span style="height:55%"></span><span style="height:92%"></span><span style="height:78%"></span>
+          </span>
+          <span class="t-label">Survey Clarity</span>
+        </a>
+        <a href="#pm" class="tile tile--pm" tabindex="-1">
+          <span class="art"></span>
+          <span class="t-big">PM<br>Onboarding</span>
+          <span class="t-label">&nbsp;</span>
+        </a>
+        <a href="#facturas" class="tile tile--facturas" tabindex="-1">
+          <span class="art"></span>
+          <span class="t-label">Gestor de Facturas</span>
+        </a>
+      </div>
 
-  <hr>
+      <div class="hero-aside">
+        <p>
+          Construyo productos digitales y los termino.
+          Obsesionada con la activación, el dato y lo que los usuarios hacen
+          cuando nadie los está mirando.
+        </p>
+        <a href="#proyectos" class="btn btn--compact">
+          Ver proyectos
+          <svg class="arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M1.5 7.5 7 13l5.5-5.5" stroke="currentColor" stroke-width="1.6"/></svg>
+        </a>
+      </div>
+    </section>
 
-  <article class="project">
-    <h2 class="project-name">Campus Tools — BIG School</h2>
-    <p class="project-role">Suite de herramientas internas — Product Manager</p>
-    <p class="project-desc">
-      Un conjunto de herramientas que diseñé y coordiné para el equipo de atención al cliente:
-      generadores de HTML para directos, banners, calendarios, thumbnails masivos, quizzes
-      y bolsa de empleo. Reduce el trabajo manual repetitivo del equipo y estandariza
-      la publicación de contenido en el campus.
-    </p>
-    <a href="https://generadordehtml.netlify.app/" target="_blank" rel="noopener" class="project-link">generadordehtml.netlify.app</a>
-    <p style="margin-top:0.6rem; font-size:0.8125rem; color:var(--mid);">Acceso: usuario <code style="font-family:monospace; color:var(--black);">BIG</code> &middot; clave <code style="font-family:monospace; color:var(--black);">1234</code></p>
-  </article>
+    <!-- ── PROJECTS ───────────────────────────── -->
+    <section id="proyectos" class="wrap projects">
+      <div class="section-head">
+        <h2 class="section-title">Cosas que he construido</h2>
+        <p class="section-note">Todos los proyectos enlazados son demos con datos de prueba.</p>
+      </div>
 
-  <hr>
+      <article class="project" id="liberai">
+        <span class="project-index">01</span>
+        <div class="project-body">
+          <h3 class="project-name">LiberAI</h3>
+          <p class="project-role">Consultora de tecnología para pymes — fundadora</p>
+          <p class="project-desc">
+            Mi consultora: construyo webs, herramientas de gestión y automatizaciones para empresas
+            de construcción, instalaciones y servicios de campo con baja madurez digital.
+            Clientes reales, proyectos desplegados, negocio en marcha.
+          </p>
+          <div class="project-actions">
+            <a href="https://liberai.es" target="_blank" rel="noopener" class="btn btn--compact">
+              liberai.es
+              <svg class="arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11 11 3M4.5 3H11v6.5" stroke="currentColor" stroke-width="1.6"/></svg>
+            </a>
+          </div>
+        </div>
+        <a href="https://liberai.es" target="_blank" rel="noopener" class="project-visual" aria-label="Abrir LiberAI">
+          <span class="tile tile--liberai"><span class="art"></span><span class="t-big">Liber<br>AI</span></span>
+        </a>
+      </article>
 
-  <article class="project">
-    <h2 class="project-name">Survey Clarity</h2>
-    <p class="project-role">Dashboard de análisis de encuestas — BIG School · Product Manager</p>
-    <p class="project-desc">
-      Una herramienta que construí para visualizar los resultados de encuestas de satisfacción
-      del máster: NPS, puntuaciones por dimensión (contenido, soporte, directos, Discord),
-      deduplicación automática de respuestas y resumen ejecutivo. Diseñada para que
-      cualquier persona del equipo lea los datos sin necesidad de exportar nada.
-    </p>
-    <a href="https://survey-clarity.lovable.app/" target="_blank" rel="noopener" class="project-link">survey-clarity.lovable.app</a>
-  </article>
+      <article class="project" id="campus">
+        <span class="project-index">02</span>
+        <div class="project-body">
+          <h3 class="project-name">Campus Tools — BIG School</h3>
+          <p class="project-role">Suite de herramientas internas — Product Manager</p>
+          <p class="project-desc">
+            Un conjunto de herramientas que diseñé y coordiné para el equipo de atención al cliente:
+            generadores de HTML para directos, banners, calendarios, thumbnails masivos, quizzes
+            y bolsa de empleo. Reduce el trabajo manual repetitivo del equipo y estandariza
+            la publicación de contenido en el campus.
+          </p>
+          <div class="project-actions">
+            <a href="https://generadordehtml.netlify.app/" target="_blank" rel="noopener" class="btn btn--compact">
+              generadordehtml.netlify.app
+              <svg class="arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11 11 3M4.5 3H11v6.5" stroke="currentColor" stroke-width="1.6"/></svg>
+            </a>
+            <span class="access">Acceso: usuario <code>BIG</code> · clave <code>1234</code></span>
+          </div>
+        </div>
+        <a href="https://generadordehtml.netlify.app/" target="_blank" rel="noopener" class="project-visual" aria-label="Abrir Campus Tools">
+          <span class="tile tile--campus"><span class="art"></span><span class="t-big">&lt;/&gt;</span></span>
+        </a>
+      </article>
 
-  <hr>
+      <article class="project" id="survey">
+        <span class="project-index">03</span>
+        <div class="project-body">
+          <h3 class="project-name">Survey Clarity</h3>
+          <p class="project-role">Dashboard de análisis de encuestas — BIG School · Product Manager</p>
+          <p class="project-desc">
+            Una herramienta que construí para visualizar los resultados de encuestas de satisfacción
+            del máster: NPS, puntuaciones por dimensión (contenido, soporte, directos, Discord),
+            deduplicación automática de respuestas y resumen ejecutivo. Diseñada para que
+            cualquier persona del equipo lea los datos sin necesidad de exportar nada.
+          </p>
+          <div class="project-actions">
+            <a href="https://survey-clarity.lovable.app/" target="_blank" rel="noopener" class="btn btn--compact">
+              survey-clarity.lovable.app
+              <svg class="arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11 11 3M4.5 3H11v6.5" stroke="currentColor" stroke-width="1.6"/></svg>
+            </a>
+          </div>
+        </div>
+        <a href="https://survey-clarity.lovable.app/" target="_blank" rel="noopener" class="project-visual" aria-label="Abrir Survey Clarity">
+          <span class="tile tile--survey">
+            <span class="art"><span style="height:45%"></span><span style="height:70%"></span><span style="height:55%"></span><span style="height:92%"></span><span style="height:78%"></span></span>
+          </span>
+        </a>
+      </article>
 
-  <article class="project">
-    <h2 class="project-name">PM Onboarding Dashboard</h2>
-    <p class="project-role">Herramienta interna — BIG School · Product Manager</p>
-    <p class="project-desc">
-      Un dashboard que diseñé y construí para estructurar el trabajo de los PMs del Máster en IA:
-      onboarding, KPIs, checklist de lanzamiento de edición, FUNDAE, contenidos, directos,
-      encuestas y pagos a profesores — todo en un solo lugar con seguimiento de progreso.
-      Construido en Lovable, operativo desde el primer día.
-    </p>
-    <a href="https://pm-big-school-launch.lovable.app/" target="_blank" rel="noopener" class="project-link">pm-big-school-launch.lovable.app</a>
-  </article>
+      <article class="project" id="pm">
+        <span class="project-index">04</span>
+        <div class="project-body">
+          <h3 class="project-name">PM Onboarding Dashboard</h3>
+          <p class="project-role">Herramienta interna — BIG School · Product Manager</p>
+          <p class="project-desc">
+            Un dashboard que diseñé y construí para estructurar el trabajo de los PMs del Máster en IA:
+            onboarding, KPIs, checklist de lanzamiento de edición, FUNDAE, contenidos, directos,
+            encuestas y pagos a profesores — todo en un solo lugar con seguimiento de progreso.
+            Construido en Lovable, operativo desde el primer día.
+          </p>
+          <div class="project-actions">
+            <a href="https://pm-big-school-launch.lovable.app/" target="_blank" rel="noopener" class="btn btn--compact">
+              pm-big-school-launch.lovable.app
+              <svg class="arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11 11 3M4.5 3H11v6.5" stroke="currentColor" stroke-width="1.6"/></svg>
+            </a>
+          </div>
+        </div>
+        <a href="https://pm-big-school-launch.lovable.app/" target="_blank" rel="noopener" class="project-visual" aria-label="Abrir PM Onboarding Dashboard">
+          <span class="tile tile--pm"><span class="art"></span><span class="t-big">PM<br>Onboarding</span></span>
+        </a>
+      </article>
 
-  <hr>
+      <article class="project" id="facturas">
+        <span class="project-index">05</span>
+        <div class="project-body">
+          <h3 class="project-name">Gestor de Facturas</h3>
+          <p class="project-role">Herramienta con IA — LiberAI · en producción</p>
+          <p class="project-desc">
+            Una herramienta real para una empresa real: captura de tickets con OCR e IA,
+            generación automática de facturas con marca, informes de conformidad con firma digital
+            y despacho a gestoría. Python + Streamlit + SQLite.
+            Desplegada en producción para una empresa de trabajos en altura en Barcelona.
+          </p>
+          <div class="project-actions">
+            <a href="https://gestorfacturas.streamlit.app" target="_blank" rel="noopener" class="btn btn--compact">
+              gestorfacturas.streamlit.app
+              <svg class="arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11 11 3M4.5 3H11v6.5" stroke="currentColor" stroke-width="1.6"/></svg>
+            </a>
+            <span class="access">Acceso: clave <code>Euler123!</code></span>
+          </div>
+        </div>
+        <a href="https://gestorfacturas.streamlit.app" target="_blank" rel="noopener" class="project-visual" aria-label="Abrir Gestor de Facturas">
+          <span class="tile tile--facturas"><span class="art"></span></span>
+        </a>
+      </article>
+    </section>
 
-  <article class="project">
-    <h2 class="project-name">Gestor de Facturas</h2>
-    <p class="project-role">Herramienta con IA — LiberAI · en producción</p>
-    <p class="project-desc">
-      Una herramienta real para una empresa real: captura de tickets con OCR e IA,
-      generación automática de facturas con marca, informes de conformidad con firma digital
-      y despacho a gestoría. Python + Streamlit + SQLite.
-      Desplegada en producción para una empresa de trabajos en altura en Barcelona.
-    </p>
-    <a href="https://gestorfacturas.streamlit.app" target="_blank" rel="noopener" class="project-link">gestorfacturas.streamlit.app</a>
-    <p style="margin-top:0.6rem; font-size:0.8125rem; color:var(--mid);">Acceso: clave <code style="font-family:monospace; color:var(--black);">Euler123!</code></p>
-  </article>
+    <!-- ── CONTACT BAND ───────────────────────── -->
+    <section id="contacto" class="band">
+      <div class="wrap">
+        <h2 class="band-title">¿Construimos algo y lo terminamos?</h2>
+        <div class="band-cols">
+          <div>
+            <h3>Email</h3>
+            <a href="mailto:macarenalvega@gmail.com">macarenalvega@gmail.com</a>
+          </div>
+          <div>
+            <h3>Dónde</h3>
+            <p>Barcelona</p>
+          </div>
+          <div>
+            <a href="https://www.linkedin.com/in/macarenalvega/" target="_blank" rel="noopener" class="btn btn--inverse">
+              Ver LinkedIn
+              <svg class="arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11 11 3M4.5 3H11v6.5" stroke="currentColor" stroke-width="1.6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <hr>
+  </main>
 
   <footer class="footer">
-    <p>Macarena Vega · Barcelona</p>
-    <p>
-      <!-- Añade tu email y LinkedIn -->
-      <a href="mailto:macarenalvega@gmail.com">macarenalvega@gmail.com</a> ·
-      <a href="https://www.linkedin.com/in/macarenalvega/" target="_blank" rel="noopener">LinkedIn</a>
-    </p>
+    <div class="wrap">
+      <p>Macarena Vega · Barcelona</p>
+      <div class="footer-links">
+        <a href="#proyectos">Proyectos</a>
+        <a href="mailto:macarenalvega@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/macarenalvega/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <p class="legal">Todos los proyectos enlazados son demos con datos de prueba.</p>
+    </div>
   </footer>
 
 </body>
