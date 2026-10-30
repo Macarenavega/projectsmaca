@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Sin tokens</title>
+<style>
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 210mm; height: 297mm; }
+body {
+  background: #0d0a14;
+  color: #f4ecd8;
+  font-family: "DejaVu Sans Mono", "Courier New", monospace;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.page {
+  position: relative; width: 210mm; height: 297mm; padding: 14mm;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 38%, #2a1640 0%, #0d0a14 62%);
+}
+.frame {
+  position: relative; height: 100%;
+  border: 2.2mm solid #ff7a1a; border-radius: 6mm;
+  padding: 10mm 12mm; display: flex; flex-direction: column; align-items: center;
+  box-shadow: inset 0 0 0 1mm #0d0a14, inset 0 0 0 1.6mm #ff7a1a55;
+}
+.bar {
+  width: 100%; display: flex; align-items: center; gap: 2.5mm;
+  font-size: 4mm; color: #b9a6d6; border-bottom: .5mm dashed #ff7a1a88; padding-bottom: 4mm;
+}
+.dot { width: 4mm; height: 4mm; border-radius: 50%; }
+.code { margin-top: 8mm; font-size: 9mm; letter-spacing: 1.5mm; color: #ff7a1a; font-weight: bold; }
+h1 {
+  margin-top: 3mm; text-align: center; line-height: .95;
+  font-family: "DejaVu Sans", Arial, sans-serif; font-weight: 900;
+  font-size: 25mm; letter-spacing: -.5mm; color: #f4ecd8;
+  text-shadow: 0 1.2mm 0 #ff7a1a, 0 2.4mm 0 #7b2cbf;
+}
+svg.ghost { margin-top: 6mm; width: 92mm; height: 92mm; }
+.meter { width: 100%; margin-top: 4mm; }
+.meter .lbl { display: flex; justify-content: space-between; font-size: 5mm; margin-bottom: 2mm; }
+.meter .lbl b { color: #ff3d3d; }
+.track {
+  height: 11mm; border: .9mm solid #f4ecd8; border-radius: 2mm; padding: 1mm;
+  background: repeating-linear-gradient(-45deg, #1a1226 0 3mm, #140e1e 3mm 6mm);
+}
+.fill { width: 100%; height: 100%; background: repeating-linear-gradient(-45deg, #ff3d3d 0 3mm, #c81e1e 3mm 6mm); border-radius: 1mm; }
+.msg { margin-top: 6mm; margin-bottom: 6mm; text-align: center; font-size: 6.2mm; line-height: 1.45; }
+.msg em { font-style: normal; color: #ff7a1a; font-weight: bold; }
+.btn { margin-bottom: 2mm;
+  margin-top: auto; font-size: 6mm; font-weight: bold; padding: 4mm 9mm;
+  border: .9mm solid #7b2cbf; border-radius: 3mm; color: #cdb4f0; opacity: .55;
+}
+.cursor { display:inline-block; width:3mm; height:6mm; background:#ff7a1a; vertical-align:-1mm; }
+.bat { position: absolute; fill: #7b2cbf; }
+</style></head>
+<body><div class="page">
+<svg class="bat" style="top:5mm;left:8mm;width:22mm" viewBox="0 0 100 40"><path d="M50 12c3-6 6-6 8-2l2-6 2 8c10-6 22-6 38 4-10 0-14 4-16 12-6-6-12-6-16 0-4-6-10-6-14 4-2-6-2-6-4-6s-2 0-4 6c-4-10-10-10-14-4-4-6-10-6-16 0C14 20 10 16 0 16c16-10 28-10 38-4l2-8 2 6c2-4 5-4 8 2z"/></svg>
+<svg class="bat" style="top:9mm;right:12mm;width:16mm;transform:rotate(12deg)" viewBox="0 0 100 40"><path d="M50 12c3-6 6-6 8-2l2-6 2 8c10-6 22-6 38 4-10 0-14 4-16 12-6-6-12-6-16 0-4-6-10-6-14 4-2-6-2-6-4-6s-2 0-4 6c-4-10-10-10-14-4-4-6-10-6-16 0C14 20 10 16 0 16c16-10 28-10 38-4l2-8 2 6c2-4 5-4 8 2z"/></svg>
+<div class="frame">
+  <div class="bar">
+    <span class="dot" style="background:#ff3d3d"></span>
+    <span class="dot" style="background:#ff7a1a"></span>
+    <span class="dot" style="background:#7b2cbf"></span>
+    <span style="margin-left:3mm">~/vida $ pensar --mucho</span>
+  </div>
+
+  <div class="code">ERROR 429</div>
+  <h1>ME QUEDÉ<br>SIN TOKENS</h1>
+
+  <svg class="ghost" viewBox="0 0 200 200">
+    <!-- moneda/token fantasma vacía -->
+    <ellipse cx="100" cy="188" rx="58" ry="7" fill="#000" opacity=".5"/>
+    <path d="M40 100a60 60 0 0 1 120 0v80l-15-12-15 12-15-12-15 12-15-12-15 12-15-12-15 12z"
+          fill="#f4ecd8" stroke="#ff7a1a" stroke-width="4"/>
+    <circle cx="100" cy="100" r="44" fill="none" stroke="#c9bda4" stroke-width="3" stroke-dasharray="6 6"/>
+    <ellipse cx="80" cy="88" rx="9" ry="13" fill="#0d0a14"/>
+    <ellipse cx="120" cy="88" rx="9" ry="13" fill="#0d0a14"/>
+    <ellipse cx="100" cy="124" rx="10" ry="13" fill="#0d0a14"/>
+    <text x="100" y="164" text-anchor="middle" font-family="DejaVu Sans Mono, monospace"
+          font-size="16" font-weight="bold" fill="#7b2cbf">0 TOKENS</text>
+  </svg>
+
+  <div class="meter">
+    <div class="lbl"><span>Tokens usados</span><b>100%</b></div>
+    <div class="track"><div class="fill"></div></div>
+    <div class="lbl" style="margin-top:2mm;font-size:4.2mm;color:#b9a6d6"><span>quedan: 0</span><span>reinicio en: 5 h</span></div>
+  </div>
+
+  <p class="msg">
+    Alcanzaste el límite de uso.<br>
+    No puedo pensar más hasta <em>mañana</em>.<br>
+    Traeme caramelos para recargar <span class="cursor"></span>
+  </p>
+
+  <div class="btn">[ REINTENTAR ]</div>
+</div>
+</div></body></html>
